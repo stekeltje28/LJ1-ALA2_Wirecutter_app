@@ -1,0 +1,1569 @@
+MainWidget:
+<MainWidget>
+    MDScreen:
+        MDNavigationLayout:
+            ScreenManager:
+                id: main_screenmanager
+                MDScreen:
+                    name: "wirescreen"
+                    id: wirescreen
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            id: homescreentop
+                            title: 'wirescreen'
+                            mode: "center"
+                            elevation: 5
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback() and app.tap_target_start()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bent nu bij het begin scherm")],["web", lambda x: root.open_website()]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            md_bg_color: 160/255, 160/255, 160/255, 0.5
+                            size_hint_y: None
+                            orientation: 'horizontal'
+                            Label:
+                                id: zie_hier
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'zie hier wat er gebeurd...'
+                                color: 0/255, 0/255, 0/255 , 1
+                                size_hint_y: None
+                                font_size: 35
+
+                        MDBoxLayout:
+                            md_bg_color: 160/255, 160/255, 160/255, 0.5
+                            size_hint_y: None
+
+                            Label:
+                                halign: 'center'
+                                valign: 'center'
+                                id: confirm1
+                                text: ''
+                                color: 0/255, 0/255, 0/255 , 1
+                                size_hint_y: None
+                                font_size: 45
+
+                        FadeScrollView:
+                            fade_height: self.height / 15
+                            fade_color: 0, 0, 0 ,0.4
+                            MDBoxLayout:
+                                size_hint_y: None
+                                height: self.minimum_height + 100
+                                orientation: 'vertical'
+                                MDBoxLayout:
+                                    orientation: 'vertical'
+                                    size_hint_y: None
+                                    height: self.minimum_height + 100
+                                    size_hint_x: 10/10
+                                    padding: 8
+                                    spacing: 8
+                                    MDBoxLayout:
+                                        size_hint_y: None
+                                        padding: 8
+                                        spacing: 30
+                                        orientation: 'vertical'
+                                        MDTextField:
+                                            size_hint_x: 0.7
+                                            pos_hint: {'center_x': 0.5}
+                                            id: ipText
+                                            hint_text: "ip-adres"
+                                            mode: "rectangle"
+                                            max_text_length: 15
+                                            helper_text_mode: "persistent"
+                                            line_color_normal: 0/255, 0/255, 0/255, 1
+                                            hint_text_color: 40/255, 70/255, 230/255, 1
+                                            helper_text_color: 0, 1, 0, 1
+                                            background_color: 60/255, 60/255, 60/255, 1
+                                            line_color_focus: 0/255, 34/255, 255/255, 1
+                                            hint_text_color_focus: 1, 0, 0, 1  # Rood
+                                            hint_text_color_normal: 0/255, 0/255, 200/255, 1  # Blauw
+                                            hint_text_color_focus: 0/255, 140/255, 30/255, 1
+                                            active_line: 1, 0, 1, 1
+                                            icon_right: "arrow-left-bold"
+                                            multiline: False
+                                            required: True
+                                            min_length: 10
+                                            max_length_text_color: 40/255, 70/255, 230/255, 1
+                                            text_color_normal: 40/255, 70/255, 230/255, 1
+                                            text_color_focus: 40/255, 70/255, 230/255, 1
+                                        MDTextField:
+                                            size_hint_x: 0.7
+                                            pos_hint: {'center_x': 0.5}
+                                            id: portText
+                                            hint_text: "port"
+                                            mode: "rectangle"
+                                            max_text_length: 6
+                                            helper_text_mode: "persistent"
+                                            line_color_normal: 0/255, 0/255, 0/255, 1
+                                            hint_text_color: 40/255, 70/255, 230/255, 1 #donkerblauw
+                                            helper_text_color: 0, 1, 0, 1
+                                            background_color: 60/255, 60/255, 60/255, 1
+                                            line_color_focus: 0/255, 34/255, 255/255, 1
+                                            hint_text_color_focus: 1, 0, 0, 1  # Rood
+                                            hint_text_color_normal: 0/255, 0/255, 200/255, 1  # Blauw
+                                            hint_text_color_focus: 0/255, 140/255, 30/255, 1
+                                            active_line: 1, 0, 1, 1
+                                            icon_right: "arrow-left-bold"
+                                            multiline: False
+                                            required: True
+                                            min_length: 3
+                                            max_length_text_color: 40/255, 70/255, 230/255, 1
+                                            text_color_normal: 40/255, 70/255, 230/255, 1
+                                            text_color_focus: 40/255, 70/255, 230/255, 1
+
+                                MDBoxLayout:
+                                    size_hint_y: None
+                                    height: self.minimum_height
+                                    orientation: 'vertical'
+                                    padding: 15
+                                    spacing: 15
+                                    MDTextField:
+                                        pos_hint: {'center_x': 0.5}
+                                        id: quantity
+                                        size_hint_x: 0.7
+                                        hint_text: "hoeveelheid draden"
+                                        mode: "rectangle"
+                                        input_filter: 'int'
+                                        max_text_length: 4
+                                        helper_text_mode: "persistent"
+                                        line_color_normal: 0/255, 0/255, 0/255, 1
+                                        hint_text_color: 40/255, 70/255, 230/255, 1
+                                        helper_text_color: 40/255, 70/255, 230/255, 1
+                                        background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                        background_color_active: 0/255, 150/255, 0/255, 1
+                                        error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                        line_color_focus: 0/255, 0/255, 0/255, 1
+                                        hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                        hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                        hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                        active_line: 40/255, 70/255, 230/255, 1
+                                        icon_right: "arrow-left-bold"
+                                        icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                        icon_right: "arrow-left-bold"
+                                        multiline: False
+                                        input_filter: 'int'
+                                        mode: "rectangle"
+                                        max_text_length: 4
+                                        min_length: 1
+                                        error_color: 1, 0, 0, 1  # Rood
+                                        max_length_text_color: 40/255, 70/255, 230/255, 1
+                                        text_color_normal: 40/255, 70/255, 230/255, 1
+                                        text_color_focus: 40/255, 70/255, 230/255, 1
+
+                                    MDTextField:
+                                        size_hint_x: 0.7
+                                        pos_hint: {'center_x': 0.5}
+                                        id: insulation_length
+                                        hint_text: "lengte draad"
+                                        mode: "rectangle"
+                                        input_filter: 'int'
+                                        max_text_length: 4
+                                        helper_text_mode: "persistent"
+                                        line_color_normal: 0/255, 0/255, 0/255, 1
+                                        hint_text_color: 40/255, 70/255, 230/255, 1
+                                        helper_text_color: 40/255, 70/255, 230/255, 1
+                                        background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                        background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                        error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                        line_color_focus: 0/255, 0/255, 0/255, 1
+                                        hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                        hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                        hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                        active_line: 40/255, 70/255, 230/255, 1
+                                        icon_right: "arrow-left-bold"
+                                        icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                        icon_right: "arrow-left-bold"
+                                        multiline: False
+                                        input_filter: 'int'
+                                        mode: "rectangle"
+                                        max_text_length: 4
+                                        min_length: 1
+                                        error_color: 1, 0, 0, 1  # Rood
+                                        max_length_text_color: 40/255, 70/255, 230/255, 1
+                                        text_color_normal: 40/255, 70/255, 230/255, 1
+                                        text_color_focus: 40/255, 70/255, 230/255, 1
+
+                                    MDTextField:
+                                        size_hint_x: 0.7
+                                        pos_hint: {'center_x': 0.5}
+                                        id: right_stripping_length
+                                        hint_text: "strip lengte rechts "
+                                        mode: "rectangle"
+                                        input_filter: 'int'
+                                        max_text_length: 4
+                                        helper_text_mode: "persistent"
+                                        line_color_normal: 0/255, 0/255, 0/255, 1
+                                        hint_text_color: 40/255, 70/255, 230/255, 1
+                                        helper_text_color: 40/255, 70/255, 230/255, 1
+                                        background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                        background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                        error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                        line_color_focus: 0/255, 0/255, 0/255, 1
+                                        hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                        hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                        hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                        active_line: 40/255, 70/255, 230/255, 1
+                                        icon_right: "arrow-left-bold"
+                                        icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                        icon_right: "arrow-left-bold"
+                                        multiline: False
+                                        input_filter: 'int'
+                                        mode: "rectangle"
+                                        max_text_length: 4
+                                        min_text_length: 1
+                                        error_color: 1, 0, 0, 1  # Rood
+                                        max_length_text_color: 40/255, 70/255, 230/255, 1
+                                        text_color_normal: 40/255, 70/255, 230/255, 1
+                                        text_color_focus: 40/255, 70/255, 230/255, 1
+
+                                    MDTextField:
+                                        size_hint_x: 0.7
+                                        id: left_stripping_length
+                                        hint_text: "strip lengte links"
+                                        mode: "rectangle"
+                                        input_filter: 'int'
+                                        max_text_length: 4
+                                        helper_text_mode: "persistent"
+                                        pos_hint: {'center_x': 0.5}
+                                        line_color_normal: 0/255, 0/255, 0/255, 1
+                                        hint_text_color: 40/255, 70/255, 230/255, 1
+                                        helper_text_color: 40/255, 70/255, 230/255, 1
+                                        background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                        background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                        error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                        line_color_focus: 0/255, 0/255, 0/255, 1
+                                        hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                        hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                        active_line: 40/255, 70/255, 230/255, 1
+                                        icon_right: "arrow-left-bold"
+                                        icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                        max_length_text_color: 40/255, 70/255, 230/255, 1
+                                        text_color_normal: 40/255, 70/255, 230/255, 1
+                                        text_color_focus: 40/255, 70/255, 230/255, 1
+
+                                MDBoxLayout:
+                                    padding: 70
+                                    spacing: 70
+                                    orientation: 'vertical'
+                                    size_hint_y: None
+                                    height: self.minimum_height
+                                    MDBoxLayout:  # 1
+                                        orientation: 'vertical'
+                                        size_hint_y: None
+                                        MDCheckbox:
+                                            id: check1
+                                            halign: 'center'
+                                            group: 'my_group'
+                                            color_active: 0/255, 220/255, 0/255, 1
+                                            color_inactive: "grey"
+                                            size: '48dp', '48dp'
+                                            color: 100/255, 100/255, 100/255, 1
+                                            on_active: root.on_checkbox_active(self, 0.40)
+                                        MDLabel:
+                                            id: label_1
+                                            halign: 'center'
+                                            text: 'kleine draatdikte\n(0.40)'
+                                            theme_text_color: 'Primary'
+
+                                    MDBoxLayout:  # 2
+                                        orientation: 'vertical'
+                                        size_hint_y: None
+
+                                        MDCheckbox:
+                                            halign: 'center'
+                                            color_active: 0/255, 220/255, 0/255, 1
+                                            id: check2
+                                            color: 100/255, 100/255, 100/255, 1
+                                            group: 'my_group'
+                                            size: '48dp', '48dp'
+                                            color_inactive: "grey"
+                                            on_active: root.on_checkbox_active(self, label_text=root.ids.dikte.text )
+                                        MDTextField:
+                                            id: dikte
+                                            size_hint_x: 0.85
+                                            pos_hint: {'center_x': 0.5}
+                                            hint_text: 'anders..'
+                                            theme_text_color: 'Primary'
+                                            mode: "rectangle"
+                                            input_filter: 'int'
+                                            max_text_length: 4
+                                            helper_text_mode: "persistent"
+                                            line_color_normal: 0/255, 0/255, 0/255, 1
+                                            hint_text_color: 40/255, 70/255, 230/255, 1
+                                            helper_text_color: 40/255, 70/255, 230/255, 1
+                                            background_color_normal: 0/255, 0/255, 0/255, 1
+                                            background_color_active: 0/ 255, 150/255, 0/255, 1
+                                            error_color: 1, 0, 0, 1
+                                            line_color_focus: 0/255, 0/255, 0/255, 1
+                                            hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                            hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                            active_line: 40/255, 70/255, 230/255, 1
+                                            icon_right: "arrow-left-bold"
+                                            icon_right_color: 0/255, 150/255, 0/255, 1
+                                            max_length_text_color: 40/255, 70/255, 230/255, 1
+                                            text_color_normal: 40/255, 70/255, 230/255, 1
+                                            text_color_focus: 40/255, 70/255, 230/255, 1
+                                            helper_text: 'in mm'
+
+
+                                    MDBoxLayout:  # 3
+                                        orientation: 'vertical'
+                                        size_hint_y: None
+
+                                        MDCheckbox:
+                                            id: check3
+                                            color_active: 0/255, 220/255, 0/255, 1
+                                            halign: 'center'
+                                            group: 'my_group'
+                                            color_inactive: "grey"
+                                            size: '48dp', '48dp'
+                                            color: 100/255, 100/255, 100/255, 1
+                                            on_active: root.on_checkbox_active(self, 0.75)
+
+                                        MDLabel:
+                                            id: label_3
+                                            halign: 'center'
+                                            text: 'grote draaddikte\n(0.75mm)'
+                                            theme_text_color: 'Primary'
+
+                        MDTopAppBar:
+                            id: homescreenbottom
+                            right_action_items: [["download", lambda x: root.open_download()],["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()], ["send", lambda x: root.start_thread()]]
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'go_errormail'
+                    id: go_errormail
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: ga_errormailtop
+                            title: "gegevens"
+                            left_action_items: [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen')], ['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("vul hier je naam, e-mail adress en het bericht dat je eventueel zou willen versturen in")]]
+                            left_icon: 'menu'
+
+                        MDBoxLayout:
+                            size_hint_y: 8/10
+                            orientation: 'vertical'
+                            padding: 40
+                            spacing: 20
+
+                            MDTextField:
+                                id: Name
+                                multiline: False
+                                mode: "rectangle"
+                                hint_text: "name"
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                mode: "rectangle"
+                                helper_text_mode: "persistent"
+                                line_color_normal: 0/255, 0/255, 0/255, 1
+                                hint_text_color: 40/255, 70/255, 230/255, 1
+                                helper_text_color: 40/255, 70/255, 230/255, 1
+                                background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                line_color_focus: 0/255, 0/255, 0/255, 1
+                                hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                active_line: 40/255, 70/255, 230/255, 1
+                                icon_right: "arrow-left-bold"
+                                icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                icon_right: "arrow-left-bold"
+                                multiline: False
+                                mode: "rectangle"
+                                error_color: 1, 0, 0, 1  # Rood
+                                max_length_text_color: 40/255, 70/255, 230/255, 1
+                                text_color_normal: 40/255, 70/255, 230/255, 1
+                                text_color_focus: 40/255, 70/255, 230/255, 1
+
+                            MDTextField:
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                size_hint_x: 0.8
+                                id: email
+                                text: '@gmail.com'
+                                required: True
+                                multiline: False
+                                mode: "rectangle"
+                                hint_text: "e-mailadres"
+                                helper_text_mode: "persistent"
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                mode: "rectangle"
+                                helper_text_mode: "persistent"
+                                line_color_normal: 0/255, 0/255, 0/255, 1
+                                hint_text_color: 40/255, 70/255, 230/255, 1
+                                helper_text_color: 40/255, 70/255, 230/255, 1
+                                background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                line_color_focus: 0/255, 0/255, 0/255, 1
+                                hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                active_line: 40/255, 70/255, 230/255, 1
+                                icon_right: "arrow-left-bold"
+                                icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                icon_right: "arrow-left-bold"
+                                multiline: False
+                                mode: "rectangle"
+                                error_color: 1, 0, 0, 1  # Rood
+                                max_length_text_color: 40/255, 70/255, 230/255, 1
+                                text_color_normal: 40/255, 70/255, 230/255, 1
+                                text_color_focus: 40/255, 70/255, 230/255, 1
+                            MDTextField:
+                                id: explanation
+                                multiline: True
+                                mode: "rectangle"
+                                hint_text: "explanation"
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                size_hint_y: 20
+                                pos_hint: {'center_x': 0.5}
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                mode: "rectangle"
+                                helper_text_mode: "persistent"
+                                line_color_normal: 0/255, 0/255, 0/255, 1
+                                hint_text_color: 40/255, 70/255, 230/255, 1
+                                helper_text_color: 40/255, 70/255, 230/255, 1
+                                background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                line_color_focus: 0/255, 0/255, 0/255, 1
+                                hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                active_line: 40/255, 70/255, 230/255, 1
+                                icon_right: "arrow-left-bold"
+                                icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                icon_right: "arrow-left-bold"
+                                mode: "rectangle"
+                                error_color: 1, 0, 0, 1  # Rood
+                                max_length_text_color: 40/255, 70/255, 230/255, 1
+                                text_color_normal: 40/255, 70/255, 230/255, 1
+                                text_color_focus: 40/255, 70/255, 230/255, 1
+                        MDTopAppBar:
+                            id: ga_errormailbottom
+                            right_action_items: [["format-color-fill", lambda x: root.show_confirmation_dialog()],["send", lambda x: root.send_message_to_discord()]]
+                            left_action_items: [["arrow-left-bold", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')]]
+
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'instructions'
+                    id: instructions
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: instructionstop
+                            title: "instructies"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("zie hier alle instructies, weetjes en feitjes over dit project")]]
+                            left_icon: 'menu'
+
+                        MDScrollView:
+                            MDGridLayout:
+                                id: box
+                                cols: 1
+                                spacing: dp(10)
+                                size_hint_y: None
+                                height: self.minimum_height
+
+                        MDTopAppBar:
+                            id: instructionsbottom
+                            right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')],["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'credits'
+                    id: credits
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: creditstop
+                            title: "credits"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bent nu bij het credit scherm, hier zie je alle namen die hebben meegeholpen aan de app")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            size_hint_y: 2/10
+                            MDLabel:
+                                font_size: 30
+                                id: credit_label1
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'zie hier iedereen die heeft\n bijgedragen aan het project!'
+                                md_bg_color: 160/255, 160/255, 160/255, 0.5
+                        MDBoxLayout:
+                            size_hint_y: 8/10
+                            MDScrollView:
+                                MDBoxLayout:
+                                    orientation: 'vertical'
+                                    size_hint_y: None
+                                    height: self.minimum_height
+                                    size_hint_x: 10/10
+                                    MDLabel
+                                        font_size: 50
+                                        size_hint_y: None
+                                        id: namelabel6
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: '<--makers van de app-->'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel1
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'Thijs Stekelenburg'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel2
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'Dévi van Riet'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel7
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'mede mogelijk gemaakt door'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel3
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'naam'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel4
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'naam'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel5
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'naam'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+                                    MDLabel
+                                        font_size: 40
+                                        size_hint_y: None
+                                        id: namelabel8
+                                        halign: 'center'
+                                        valign: 'center'
+                                        text: 'naam'
+                                        md_bg_color: 160/255, 160/255, 160/255, 0.5
+
+                        MDTopAppBar:
+                            id: creditsbottom
+                            right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'devpassscreen'
+                    id: devpassscreen
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: passtop
+                            title: "eerst je wachtwoord..."
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bent nu bij het ontwikkelaarscherm, hier kun je alleen in met een wachtwoord")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            padding: 10
+                            spacing: 10
+                            size_hint_x: None
+                            width: "300dp"
+                            hint_text: "Password"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            orientation: "vertical"
+                            MDLabel:
+                                id: lab1
+                                text: "Password verivication"
+                                halign: "center"
+                                font_size: self.height/10
+                            RelativeLayout:
+                                size_hint_y: None
+                                height: text_field.height
+
+                                MDTextField:
+                                    id: text_field
+                                    password: True
+                                    icon_left: "key-variant"
+                                    on_text_validate: root.check_password()
+
+                                MDIconButton:
+                                    icon: "eye-off"
+                                    pos_hint: {"center_y": .5}
+                                    pos: text_field.width - self.width + dp(8), 0
+                                    theme_text_color: "Hint"
+                                    on_release:
+                                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                                        text_field.password = False if text_field.password is True else True
+                        MDBoxLayout:
+                            MDTopAppBar:
+                                id: passbottom
+                                right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'sended_screen'
+                    id: sended_screen
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: sendscreentop
+                            title: "bericht verzonden"
+                            left_action_items: [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen')], ['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bericht is verzonden, klik op de button om terug te gaan")]]
+                            left_icon: 'menu'
+
+                        MDBoxLayout:
+                            MDLabel:
+                                id: verzonden
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'je bericht is verzonden!'
+                                md_bg_color: 160/255, 160/255, 160/255, 0.5
+                        MDTopAppBar:
+                            id: sendscreenbottom
+                            right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'RUN_sended_screen'
+                    id: RUN_sended_screen
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: sendscreentop
+                            title: "bericht verzonden"
+                            left_action_items: [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen')], ['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bericht is verzonden, klik op de button om terug te gaan")]]
+                            left_icon: 'menu'
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            MDLabel:
+                                id: verzonden2
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'je bericht is verzonden!'
+                                md_bg_color: 160/255, 160/255, 160/255, 0.5
+                            MDLabel:
+                                id: back_message
+                                halign: 'center'
+                                valign: 'center'
+                                text: ''
+                                md_bg_color: 160/255, 160/255, 160/255, 0.5
+                        MDTopAppBar:
+                            id: sendscreenbottom
+                            right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'dev_mainscreen'
+                    id: dev_mainscreen
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: ontwikkelaartop
+                            title: "je bent een ontwikkelaar!"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bent een ontwikkelaar!")]]
+                            left_icon: 'menu'
+
+                        MDBoxLayout:
+                            spacing: 10
+                            padding: 10
+                            orientation: "vertical"
+                            MDLabel:
+                                id: dev_use
+                                text: "hey, welkom bij het developer screen"
+                                halign: "center"
+                                font_size: self.height/10
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                size_hint_x: 0.8
+                                size_hint_y: 1
+                            MDTextField:
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                size_hint_x: 0.6
+                                size_hint_y: 0.35
+                                id: message_to_server
+                                hint_text: "enter message"
+                                md_bg_color: 64/255, 64/255, 64/255, 1
+                                multiline: True
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                mode: "rectangle"
+                                helper_text_mode: "persistent"
+                                line_color_normal: 0/255, 0/255, 0/255, 1
+                                hint_text_color: 40/255, 70/255, 230/255, 1
+                                helper_text_color: 40/255, 70/255, 230/255, 1
+                                background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                line_color_focus: 0/255, 0/255, 0/255, 1
+                                hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                active_line: 40/255, 70/255, 230/255, 1
+                                icon_right: "arrow-left-bold"
+                                icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                icon_right: "arrow-left-bold"
+                                mode: "rectangle"
+                                error_color: 1, 0, 0, 1  # Rood
+                                max_length_text_color: 40/255, 70/255, 230/255, 1
+                                text_color_normal: 40/255, 70/255, 230/255, 1
+                                text_color_focus: 40/255, 70/255, 230/255, 1
+
+                        MDBoxLayout:
+                            MDTopAppBar:
+                                id: ontwikkelaarbottom
+                                right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()], ["send", lambda x: root.send_message(message_to_server.text)]]
+                                left_action_items: [["lock-open-variant", lambda x: root.send_message('open')], ["lock", lambda x: root.send_message('close')]]
+
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    id: errormail
+                    name: 'errormail'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: errormailtop
+                            title: "stuur een bericht!"
+                            left_action_items: [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen')], ['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("stuur een bericht naar de makers van de app")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            size_hint_y: 2/10
+                            orientation: 'vertical'
+                            md_bg_color: 160/255, 160/255, 160/255, 0.5
+                            MDLabel:
+                                id: uitleg_s
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                size_hint_x: 0.8
+                                text: 'selecteer welk(e) probleem/problemen je hebt\n je kunt natuurlijk ook een bericht sturen met tips of tops!'
+                                halign: 'center'
+                                valign: 'center'
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                MDScrollView:
+                                    MDStackLayout:
+                                        id: source_layout
+                                        padding: 10
+                                        spacing: 20
+                                        size_hint_y: None
+                                        height: self.minimum_height + 100
+                                        MagicButton:
+                                            id: button_1
+                                            on_release: self.wobble()
+                                            color: 'black'
+                                            text:'taalfouten'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_1.text)
+                                            on_release: root.change_button_color1(button_1, source_layout, target_layout)
+
+                                        MagicButton:
+                                            id: button_2
+                                            on_release: self.wobble()
+                                            text:'verkeerde draad\nafmetingen'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_2.text)
+                                            on_release: root.change_button_color2(button_2, source_layout, target_layout)
+
+                                        MagicButton:
+                                            id: button_3
+                                            on_release: self.wobble()
+                                            text:'tips'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_3.text)
+                                            on_release: root.change_button_color3(button_3, source_layout, target_layout)
+
+                                        MagicButton:
+                                            id: button_4
+                                            on_release: self.wobble()
+                                            text:'bugs'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_4.text)
+                                            on_release: root.change_button_color4(button_4, source_layout, target_layout)
+
+                                        MagicButton:
+                                            id: button_5
+                                            on_release: self.wobble()
+                                            text:'error'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_5.text)
+                                            on_release: root.change_button_color5(button_5, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_6
+                                            on_release: self.wobble()
+                                            text:'wire cutter error'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_6.text)
+                                            on_release: root.change_button_color6(button_6, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_7
+                                            on_release: self.wobble()
+                                            text:'lichten doen het niet'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_7.text)
+                                            on_release: root.change_button_color7(button_7, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_8
+                                            on_release: self.wobble()
+                                            text:'geen error, gebeurd niks'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_8.text)
+                                            on_release: root.change_button_color8(button_8, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_9
+                                            on_release: self.wobble()
+                                            text:'de app loopt vast'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(self.text)
+                                            on_release: root.change_button_color9(button_9, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_10
+                                            on_release: self.wobble()
+                                            text:'hoe stel ik de maten in?'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_10.text)
+                                            on_release: root.change_button_color10(button_10, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_11
+                                            on_release: self.wobble()
+                                            text:'de app sluit zodra\nik op een button klik'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_11.text)
+                                            on_release: root.change_button_color11(button_11, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_12
+                                            on_release: self.wobble()
+                                            text:'anders:'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(anders.text)
+                                            on_release: root.change_button_color12(button_12, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_13
+                                            on_release: self.wobble()
+                                            text:'apps sluit na\nklikken op button'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_13.text)
+                                            on_release: root.change_button_color13(button_13, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_14
+                                            on_release: self.wobble()
+                                            text:'ik wil meer informatie\nover de wire cutter'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_14.text)
+                                            on_release: root.change_button_color14(button_14, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_15
+                                            on_release: self.wobble()
+                                            text:'belangrijk bericht!'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_15.text)
+                                            on_release: root.change_button_color15(button_15, source_layout, target_layout)
+
+
+                                        MagicButton:
+                                            id: button_16
+                                            on_release: self.wobble()
+                                            text:'hoe werkt het?!'
+                                            md_bg_color: 40/255, 148/255, 244/255, 1
+                                            text_color: 255/255, 255/255, 255/255, 1
+                                            on_press: root.print_id(button_16.text)
+                                            on_release: root.change_button_color16(button_16, source_layout, target_layout)
+                                MDScrollView:
+                                    MDStackLayout:
+                                        id: target_layout
+                                        padding: 10
+                                        spacing: 20
+                                        size_hint_y: None
+                                        height: self.minimum_height
+                            MDBoxLayout:
+                                size_hint_y: 2.5/10
+                                size_hint_x: 8/10
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                MDTextField:
+                                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                    id: anders
+                                    hint_text: "anders"
+                                    md_bg_color: 64/255, 64/255, 64/255, 1
+                                    multiline: True
+                                    size_hint_x: 1/10
+                                    helper_text_mode: "persistent"
+                                    mode: "rectangle"
+                                    line_color_normal: 0/255, 0/255, 0/255, 1
+                                    hint_text_color: 40/255, 70/255, 230/255, 1
+                                    helper_text_color: 40/255, 70/255, 230/255, 1
+                                    background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                    background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                    error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                    line_color_focus: 0/255, 0/255, 0/255, 1
+                                    hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                    hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                    hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                    active_line: 40/255, 70/255, 230/255, 1
+                                    icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                    icon_right: "arrow-left-bold"
+                                    multiline: False
+                                    mode: "rectangle"
+                                    error_color: 1, 0, 0, 1  # Rood
+                                    max_length_text_color: 40/255, 70/255, 230/255, 1
+                                    text_color_normal: 40/255, 70/255, 230/255, 1
+                                    text_color_focus: 40/255, 70/255, 230/255, 1
+                            MDTopAppBar:
+                                id: errormailbottom
+                                right_action_items: [["format-color-fill", lambda x: root.show_confirmation_dialog()], ["arrow-right-bold", lambda x: setattr(root.ids.main_screenmanager, 'current', 'go_errormail')]]
+
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'vibratie'
+                    id: vibratie
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: vibreertop
+                            title: "vibreer..."
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("laat je telefoon trillen, gebruik je slidebar om de duur te bepalen")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            md_bg_color: 160/255, 160/255, 160/255, 0.5
+                            MDLabel:
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'klik op vibreer om je telefoon\n te laten vibreren\n de duur kun je instellen op de slider/n de duur is in secondes'
+                        MDBoxLayout:
+                            size_hint_y: 8/10
+                            orientation: 'vertical'
+                            padding: 40
+                            spacing: 20
+
+                            MagicButton:
+                                size_hint_x: 8/10
+                                size_hint_y: 3/10
+                                pos_hint: {'center_x': 0.5, 'bottom_y': 0.5}
+                                text: 'vibreer'
+                                id: vibr
+                                on_press: self.grow()
+                                on_press: root.vibratie()
+                                md_bg_color: 40/255, 148/255, 244/255, 1
+                                text_color: 255/255, 255/255, 255/255, 1
+                        MDBoxLayout:
+                            size_hint_y: 8/10
+                            MDSlider:
+                                id: vib_slider
+                                pos_hint: {'center_x': 0.5, 'bottom_y': 0.5}
+                                hint_text: 'duur vibreren in sec'
+                                hint_bg_color: 1, 1, 1, 1
+                                hint_text_color: 0, 0, 0, 1
+                        MDBoxLayout:
+                            MDTopAppBar:
+                                id: vibreerbottom
+                                right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'battery'
+                    id: battery
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: batterijtop
+                            title: "batterij status"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("hier heb je een overzicht van je batterij status")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            padding: 40
+                            spacing: 40
+                            size_hint_y: 1/10
+                            orientation: 'vertical'
+                            MagicButton:
+                                on_press: self.wobble()
+                                on_release: root.battery()
+                                pos_hint: {'center_x': 0.5}
+                                md_bg_color: 40/255, 148/255, 244/255, 1
+                                text_color: 255/255, 255/255, 255/255, 1
+                                id: update_b
+                                text: 'update batterij status'
+                            MDLabel:
+                            MDProgressBar:
+                                id: progress
+                                size_hint_y: 1/10
+                                size_hint_x: 9/10
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            MDLabel:
+                            MDIcon:
+                                id: battery_icon
+                                icon: "battery-charging-50"
+                                font_size: 70
+                                size_hint_y: 10/10
+                                size_hint_x: 8/10
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                        MDTopAppBar:
+                            id: batterijbottom
+                            right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'speakscreen'
+                    id: speakscreen
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: assistenttop
+                            title: "laat het voorlezen!"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("typ wat in de textfielt en druk daarna op de speaker om het door mij te laten voorlezen")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            padding: 20
+                            spacing: 20
+                            orientation: 'vertical'
+
+
+                            MDTextField:
+                                id: speaktext
+                                hint_text: "wat wil je zeggen?"
+                                md_bg_color: 64/255, 64/255, 64/255, 1
+                                multiline: True
+                                helper_text_mode: "persistent"
+                                size_hint_x: 0.8
+                                mode: "rectangle"
+                                helper_text_mode: "persistent"
+                                line_color_normal: 0/255, 0/255, 0/255, 1
+                                hint_text_color: 40/255, 70/255, 230/255, 1
+                                helper_text_color: 40/255, 70/255, 230/255, 1
+                                background_color_normal: 0/255, 0/255, 0/255, 1  # Zwarte achtergrond
+                                background_color_active: 0/255, 150/255, 0/255, 1  # Donkergroene achtergrond bij actieve status
+                                error_color: 1, 0, 0, 1  # Rode achtergrond bij fout
+                                line_color_focus: 0/255, 0/255, 0/255, 1
+                                hint_text_color_normal: 0/255, 0/255, 200/255, 1
+                                hint_text_color_focus: 0/255, 150/255, 0/255, 1
+                                hint_text_color_error: 0/255, 150/255, 0/255, 1
+                                active_line: 40/255, 70/255, 230/255, 1
+                                icon_right: "arrow-left-bold"
+                                icon_right_color: 0/255, 150/255, 0/255, 1  # Groene kleur bij correcte invoer
+                                icon_right: "arrow-left-bold"
+                                mode: "rectangle"
+                                error_color: 1, 0, 0, 1  # Rood
+                                max_length_text_color: 40/255, 70/255, 230/255, 1
+                                text_color_normal: 40/255, 70/255, 230/255, 1
+                                text_color_focus: 40/255, 70/255, 230/255, 1
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        MDBoxLayout:
+                            MDTopAppBar:
+                                id: assistentbottom
+                                right_action_items: [["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()], ["speaker", lambda x: root.speaksettings(speaktext.text)]]
+
+                MDScreen:
+                    md_bg_color: 1, 1, 1, 1
+                    name: 'foutcode'
+                    id: foutcode
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDTopAppBar:
+                            elevation: 5
+                            id: foutcodetop
+                            title: "foutmeldingen"
+                            left_action_items:
+                                [['home', lambda x: setattr(root.ids.main_screenmanager, 'current', 'wirescreen'), 'Home'],
+                                ['menu', lambda x: nav_drawer.set_state("open"), 'Open Menu']]
+                            right_action_items: [["arrow-right", lambda x: app.right_arrow_callback()]]
+                            right_action_items: [["dots-vertical", lambda x: app.callback_1()]]
+                            right_action_items: [["speaker-message", lambda x: root.speaksettings("je bent bij het foutmeldingen scherm, je ziet hier alle foutmeldingen die je hebt gekregen")]]
+                            left_icon: 'menu'
+                        MDBoxLayout:
+                            size_hint_y: 2/10
+                            MDLabel:
+                                id: foutmelding
+                                halign: 'center'
+                                valign: 'center'
+                                text: 'zie hier alle foutmeldingen'
+                                md_bg_color: 160/255, 160/255, 160/255, 0.5
+
+                        ScrollView:
+                            md_bg_color: 1, 1, 1, 0.5
+                            id: scroll
+                            BoxLayout:
+                                md_bg_color: 1, 1, 1, 0.5
+                                id: box1
+                                orientation: 'vertical'
+                                size_hint_y: None
+                                height: self.minimum_height + 50
+
+                        MDTopAppBar:
+                            id: foutcodebottom
+                            right_action_items: [["delete", lambda x: root.clear_data_widget()],["comment-alert", lambda x: setattr(root.ids.main_screenmanager, 'current', 'errormail')], ["format-color-fill", lambda x: root.show_confirmation_dialog()]]
+        MDNavigationDrawer:
+            id: nav_drawer
+            scrim_color: (0, 0, 0, 1)
+            radius: (0, 16, 16, 0)
+            opening_transition:'in_out_quint'
+            opening_time:1
+            closing_transition: 'out_bounce'
+            closing_time:1.2
+
+
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerLabel:
+                    text: ""
+                    markup: 1, 0, 0, 1
+                    id: kloklabel
+
+                MDNavigationDrawerHeader:
+                    id: header
+                    title: "ALA app"
+                    source: "assets/A.png"
+                    text: "Menu"
+                    spacing: "10dp"
+                    padding: "12dp", 0, 0, "56dp"
+                MDNavigationDrawerLabel:
+                    text: 'battery stats'
+                MDNavigationDrawerDivider:
+                MDProgressBar:
+                    id: progress
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                MDIcon:
+                    id: battery_icon
+                    icon: ""
+                    font_size: 70
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                MDNavigationDrawerDivider:
+                MDNavigationDrawerLabel:
+                    text: "home"
+                    markup: 1, 0, 0, 1
+                    id: DrawerLabel1
+
+
+                DrawerClickableItem:
+                    id: DrawerClickable1
+                    text: "home"
+                    icon: "home"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'wirescreen'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+                MDNavigationDrawerDivider:
+                MDNavigationDrawerLabel:
+                    text: "algemeen"
+                    id: DrawerLabel2
+
+                DrawerClickableItem:
+                    id: DrawerClickable2
+                    text: "support"
+                    icon: "comment-alert"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'errormail'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+
+                DrawerClickableItem:
+                    id: DrawerClickable3
+                    text: "instructies & hulp"
+                    icon: "book-open-blank-variant"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'instructions'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+
+                DrawerClickableItem:
+                    id: DrawerClickable4
+                    text: "taal"
+                    icon: "translate-variant"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.open_taal()
+                    on_press: root.vibreer(0.5)
+
+                DrawerClickableItem:
+                    id: DrawerClickable5
+                    text: "credits"
+                    icon: "hand-coin"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'credits'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+
+                DrawerClickableItem:
+                    id: DrawerClickable6
+                    text: "foutmeldingen"
+                    icon: "alert-circle-outline"
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'foutcode'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "instellingen"
+                    id: DrawerLabel3
+
+                DrawerClickableItem:
+                    id: DrawerClickable7
+                    text: 'batterij status'
+                    icon: 'battery'
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'battery'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+                DrawerClickableItem:
+                    id: DrawerClickable8
+                    text: 'telefoon vibratie'
+                    icon: 'vibrate'
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'vibratie'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+                DrawerClickableItem:
+                    id: DrawerClickable9
+                    text: 'google help stem'
+                    icon: 'google-assistant'
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'speakscreen'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+                DrawerClickableItem:
+                    id: DrawerClickable10
+                    text: 'ontwikkelaarsopties'
+                    icon: 'tune'
+                    focus_color: root.primary_color1
+                    unfocus_color: root.primary_color2
+                    on_press: root.ids.main_screenmanager.current = 'devpassscreen'
+                    on_release: nav_drawer.set_state("close")
+                    on_press: root.vibreer(0.3)
+                    selected_color: '#000000'
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+
+
+<Content1>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "ga naar home"
+        tertiary_text: "vul daar alle gegevens in"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content2>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "kijk naar de error melding anders"
+        tertiary_text: "ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content3>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "haal de stroom er af en er weer op"
+        tertiary_text: "anders ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content4>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "wanneer je geen response krijgt"
+        tertiary_text: "ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content5>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "staan op het schermpje weergeven"
+        tertiary_text: "niet het geval? ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content6>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "vul het ip en port in"
+        tertiary_text: "en de draden die je wil knippen"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content7>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "ga naar een docent! geen zin?"
+        tertiary_text: "ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content8>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "ga naar een docent of"
+        tertiary_text: "ga naar support"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content9>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "zodat je tengels er niet"
+        tertiary_text: "tussen komen te zitten"
+        IconLeftWidget:
+            icon: 'wrench'
+<Content10>
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "er zijn ruim 3200 lijnen"
+        tertiary_text: "gebruikt voor de codes"
+        IconLeftWidget:
+            icon: 'emoticon-dead-outline'
+
+<Content11>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "er is minimaal 500 uur erin gestoken "
+        tertiary_text: "'duur grapje:)'"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content12>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "momenteel staat de teller op 3"
+        tertiary_text: "dit kan nog verder oplopen:)"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content13>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "TE VEEL"
+        tertiary_text: "zeker 200 uur"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content14>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "ga naar credits!"
+        tertiary_text: "zie hier iedereen die heeft bijgedragen"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content15>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "ga naar de website!"
+        tertiary_text: "vind hier alle content"
+        IconLeftWidget:
+            icon: 'wrench'
+
+<Content16>:
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: 'vertical'
+
+    ThreeLineIconListItem:
+        text: "antwoord:"
+        secondary_text: "NEE"
+        tertiary_text: "maar is wel leuk"
+        IconLeftWidget:
+            icon: 'wrench'
+
+
+<MyDialogg>:
+    title: "Hey! Verander de kleuren van de app!"
+    text: "Kies je kleur!"
+    buttons: ["Text Color Picker", "Toolbar Color Picker", "Background Color Picker"]
+
+    radius: [50, 5, 50, 5]
+    size_hint: 0.8, None
+    size: 400, 400
+
+    MDBoxLayout
+<ItemConfirm>
+    on_release: root.set_icon(check)
+
+    CheckboxLeftWidget:
+        id: check
+        group: "check"
+<MagicButton@MagicBehavior+MDRectangleFlatButton>
+
